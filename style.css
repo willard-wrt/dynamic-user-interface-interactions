@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+li {
+  list-style: none;
+}
+
+.nav.item {
+  display: flex;
+  text-align: center;
+  position: relative;
+  font-size: 24px;
+  background-color: beige;
+  cursor: pointer;
+}
+
+.nav.item:hover {
+  background-color: bisque;
+}
+
+.nav.item > span, .sub.li > span {
+  flex: 1;
+  padding: 1rem;
+  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.5);
+}
+
+.sub-nav {
+  display: flex;
+  visibility: hidden;
+  flex-direction: column;
+  position: absolute;
+}
