@@ -35,10 +35,20 @@ li {
   background-color: bisque;
 }
 
+.sub-nav {
+  background-color: bisque;
+}
+
+.sub-span {
+  display: block;
+  line-height: 0.8;
+}
+
 .nav.item > span, .sub-li > span {
   flex: 1;
   padding: 1rem;
   box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.5);
+  width:100px;
 }
 
 .sub-nav {
@@ -47,6 +57,14 @@ li {
   flex-direction: column;
   position: absolute;
 }
+
+.active > .sub-nav {
+  transform: translate(0, 4rem);
+  transition: transform 350ms;
+  visibility: visible;
+}
+
+
 
 #img-frame-container {
   margin: auto;
