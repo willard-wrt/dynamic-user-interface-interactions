@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+button {
+  cursor: pointer;
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -97,7 +101,11 @@ li {
 }
 
 .position-indicator:hover {
-  background-color:  pink;
+  background-color:  rgb(255, 231, 235);
+}
+
+.position-indicator.active {
+  background-color: lightpink;
 }
 
 .controller {
