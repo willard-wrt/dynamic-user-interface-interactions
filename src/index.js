@@ -4,6 +4,7 @@ const imgController = (() => {
   const flowersLength = flowers.length;
   let resetIndex = 0;
   let activeIndex = 0;
+  const autoSliderTimer = 4000; // in milliseconds
   function activeReset() {
     Array.from(flowers).forEach((flower) => {
       if (flower.classList.contains('active')) {
@@ -14,6 +15,8 @@ const imgController = (() => {
   }
   function leftSlider() {
     activeReset();
+    clearInterval(timer);
+    timer = setInterval(rightSlider, autoSliderTimer);
     if (resetIndex == 0) {
       Array.from(flowers)[flowersLength - 1].classList.add('active');
       activeIndex = flowersLength - 1;
@@ -26,6 +29,8 @@ const imgController = (() => {
   }
   function rightSlider() {
     activeReset();
+    clearInterval(timer);
+    timer = setInterval(rightSlider, autoSliderTimer);
     Array.from(flowers)[(resetIndex + 1) % flowersLength].classList.add(
       'active'
     );
@@ -42,6 +47,11 @@ const imgController = (() => {
       }
     });
   }
+
+  let timer = setInterval(() => {
+    rightSlider();
+  }, autoSliderTimer);
+
   return { leftSlider, rightSlider };
 })();
 
@@ -51,7 +61,6 @@ prevBtn.addEventListener('click', imgController.leftSlider);
 nextBtn.addEventListener('click', imgController.rightSlider);
 
 console.log('webpack is working');
-
 const topNav = document.getElementById('top-nav');
 topNav.addEventListener('click', (e) => {
   const navItem = e.target.closest('.nav.item');
