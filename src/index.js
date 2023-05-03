@@ -65,22 +65,22 @@ const imgController = (() => {
   return { leftSlider, rightSlider, activateIndex };
 })();
 
+console.log('webpack is working');
+
+const topNav = document.getElementById('top-nav');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const indexBtns = document.querySelectorAll('.position-indicator');
 
+topNav.addEventListener('click', (e) => {
+  const navItem = e.target.closest('.nav.item');
+  navItem.classList.toggle('active');
+  console.log(navItem);
+});
 prevBtn.addEventListener('click', imgController.leftSlider);
 nextBtn.addEventListener('click', imgController.rightSlider);
 indexBtns.forEach((item) => {
   item.addEventListener('click', (e) => {
     imgController.activateIndex(e);
   });
-});
-
-console.log('webpack is working');
-const topNav = document.getElementById('top-nav');
-topNav.addEventListener('click', (e) => {
-  const navItem = e.target.closest('.nav.item');
-  navItem.classList.toggle('active');
-  console.log(navItem);
 });
