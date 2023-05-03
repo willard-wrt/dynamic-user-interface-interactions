@@ -52,13 +52,30 @@ const imgController = (() => {
     rightSlider();
   }, autoSliderTimer);
 
-  return { leftSlider, rightSlider };
+  function activateIndex(e) {
+    const indexBtn = e.target.dataset.navIndex;
+    activeReset();
+    clearInterval(timer);
+    timer = setInterval(rightSlider, autoSliderTimer);
+    activeIndex = indexBtn;
+    activeIndicator();
+    Array.from(flowers)[activeIndex].classList.add('active');
+  }
+
+  return { leftSlider, rightSlider, activateIndex };
 })();
 
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
+const indexBtns = document.querySelectorAll('.position-indicator');
+
 prevBtn.addEventListener('click', imgController.leftSlider);
 nextBtn.addEventListener('click', imgController.rightSlider);
+indexBtns.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    imgController.activateIndex(e);
+  });
+});
 
 console.log('webpack is working');
 const topNav = document.getElementById('top-nav');
